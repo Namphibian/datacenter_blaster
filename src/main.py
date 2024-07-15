@@ -14,10 +14,12 @@ app = FastAPI(
     debug=True,
     description="API to manage Datacenters and " "their associated network.",
 )
-app.add_middleware(RouterLoggingMiddleware, logger= _LOGGER)
+app.add_middleware(RouterLoggingMiddleware, logger=_LOGGER)
 app.include_router(datacenter.router)
 
 _LOGGER.info("Starting uvicorn")
+
+
 @app.get("/health", tags=["Health"])
 async def root():
     return {"message": "Hello World"}

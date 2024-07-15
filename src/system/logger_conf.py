@@ -12,7 +12,7 @@ logging_config = {
     },
     "handlers": {
         "console": {
-            "level": os.getenv('DC_BLASTER_LOG_LEVEL' "DEBUG"),
+            "level": os.getenv("DC_BLASTER_LOG_LEVEL" "DEBUG"),
             "class": "logging.StreamHandler",
             "formatter": "json",
             "stream": sys.stderr,

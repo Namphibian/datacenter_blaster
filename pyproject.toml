@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "datacener-blaster"
+name = "datacenter-blaster"
 version = "0.1.0"
 description = ""
 authors = ["Cornelius Franken <cornelius.franken@ventia.com.au>"]
