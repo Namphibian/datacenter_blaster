@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "datacener-blaster"
+version = "0.1.0"
+description = ""
+authors = ["Cornelius Franken <cornelius.franken@ventia.com.au>"]
+readme = "README.md"
+
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+uvicorn = "^0.30.1"
+ruff="0.5.1"
+SQLAlchemy="2.0.31"
+python-json-logger="2.0.7"
+
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

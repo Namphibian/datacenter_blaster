@@ -1,0 +1,3 @@
+service:
+  datacenter_blaster_db: { }
+
