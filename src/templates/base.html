@@ -5,20 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}"/>
     <script src="{{ url_for('static', path='js/htmx.min.js') }}"></script>
     <script src="{{ url_for('static', path='js/simple-datatables.js') }}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <!-- Alpine.js -->
+    <script src="https://unpkg.com/alpinejs"></script>
+
+    <!-- tippyjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.7/tippy.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://unpkg.com/@ryangjchandler/alpine-tooltip@1.2.0/dist/cdn.min.js" crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
     <script type="application/javascript">
-    document.addEventListener('htmx:afterSettle', function (evt) {
-        alert("Datalist");
-        if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-            const dataTable = new simpleDatatables.DataTable("#default-table", {
-                searchable: true,
-                perPageSelect: false
-            });
-        }
-    })
-</script>
+        document.addEventListener('htmx:afterSettle', function (evt) {
+
+            if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#default-table", {
+                    searchable: true,
+                    perPageSelect: false
+                });
+            }
+        })
+    </script>
 
     {% block header %} {% endblock %}
 </head>
@@ -35,12 +46,12 @@
                     {% block content %} {% endblock content %}
                 </div>
             </main>
-            <nav class="order-first w-fit ">
-                <ul class="menu menu-md rounded-box">
+            <nav class="order-first w-fit pt-1">
+                <ul class="overflow-hidden rounded-lg border border-gray-200 shadow-md p-4">
                     <li class="menu-title text-xl">Main Menu</li>
                     <li><a href="#" hx-get="/datacenter" hx-swap="outerHTML" hx-target="#data-target">Datacenter</a>
                     </li>
-                    <li><a href="#" hx-get="/datacenter" hx-swap="outerHTML" hx-target="#data-target">>CIDR</a></li>
+                    <li><a href="#" hx-get="/datacenter" hx-swap="outerHTML" hx-target="#data-target">CIDR</a></li>
                     <li><a>IP Addresses</a></li>
                 </ul>
             </nav>

@@ -29,5 +29,9 @@
     "build:flowbite": "cp node_modules/flowbite/dist/flowbite.min.js  ../src/static/js/flowbite.min.js",
     "build:datatable": "cp node_modules/simple-datatables/dist/umd/simple-datatables.js  ../src/static/js/simple-datatables.js",
     "watch:tailwindcss": "npm-watch build:tailwindcss"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.14"
   }
 }

@@ -1,0 +1,46 @@
+<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md p-4">
+    <table id="default-table" class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+        <thead class="bg-gray-50">
+        <tr>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Code</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
+            <th scope="col" class="px-6 py-4 font-medium text-gray-900">Networks</th>
+        </tr>
+        </thead>
+        <tbody  class="divide-y divide-gray-100 border-t border-gray-100">
+        {% for dc in items %}
+        <tr>
+            <td class="px-6 py-4 font-medium text-gray-900">{{ dc.code}}
+
+            </td>
+            <td class="px-6 py-4">{{ dc.name}}</td>
+            <td class="px-6 py-4">{{ dc.datacenter_status.code}}</td>
+
+            <td>
+                <div class="flex gap-2">
+                {% for cidr in dc.networks %}
+                    <span class="rounded-full bg-primary-50 px-2 py-1 text-xs font-semibold text-primary-600">{{cidr.cidr}}</span>
+<!--                        <div class="stat-desc">{{cidr.number_of_free_ips}} addresses available</div>-->
+<!--                    </div>-->
+                {% endfor %}
+                </div>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <script type="application/javascript">
+
+        if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+            const dataTable = new simpleDatatables.DataTable("#default-table", {
+                searchable: true,
+                perPageSelect: false
+            });
+            alert("dtable")
+        }
+
+    </script>
+

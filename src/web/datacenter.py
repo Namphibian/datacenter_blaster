@@ -15,7 +15,7 @@ router = APIRouter(prefix="/datacenter")
     tags=["Datacenter"],
     summary="List all the datacenters summary",
 )
-@jinja.hx("datacenter-list.html")
+@jinja.hx("datacenter_data_table.html")
 @log
 def get_all_datacenters() -> list[DataCenterInfo]:
     return service.get_all()
