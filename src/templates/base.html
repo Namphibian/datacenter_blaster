@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}" />
+    <script src="{{ url_for('static', path='js/htmx.min.js') }}"></script>
+    <script src="{{ url_for('static', path='js/simple-datatables.js') }}"></script>
+    <script type="application/javascript">
+    document.addEventListener('htmx:afterSettle', function (evt) {
+        alert("Datalist");
+        if (document.getElementById("default-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+            const dataTable = new simpleDatatables.DataTable("#default-table", {
+                searchable: true,
+                perPageSelect: false
+            });
+        }
+    })
+</script>
+
+    {% block header %} {% endblock %}
+</head>
+
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+
+
+    <div class="flex min-h-screen flex-col">
+
+        <div class="flex flex-1 flex-row">
+            <main class="flex-1  p-4">
+                <div id="data-target">
+                    {% block content %} {% endblock content %}
+                </div>
+            </main>
+            <nav class="order-first w-fit ">
+                <ul class="menu menu-md rounded-box">
+                    <li class="menu-title text-xl">Main Menu</li>
+                    <li><a href="#" hx-get="/datacenter" hx-swap="outerHTML" hx-target="#data-target">Datacenter</a>
+                    </li>
+                    <li><a href="#" hx-get="/datacenter" hx-swap="outerHTML" hx-target="#data-target">>CIDR</a></li>
+                    <li><a>IP Addresses</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</main>
+{% block script %} {% endblock script %}
+<script src="{{ url_for('static', path='js/flowbite.min.js') }}"></script>
+</body>
+
+</html>

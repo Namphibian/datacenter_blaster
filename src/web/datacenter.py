@@ -1,12 +1,9 @@
-import logging
-from typing import List
-
 from fastapi import APIRouter
+from fake import datacenter as service
+from schema.datacenter import DataCenterInfo, DataCenterRecord
+from system.decorators import log
+from system.jinja import jinja
 
-from ..fake import datacenter as service
-from ..schema.datacenter import DataCenter
-
-_LOGGER = logging.getLogger(__name__)
 router = APIRouter(prefix="/datacenter")
 
 
@@ -14,11 +11,13 @@ router = APIRouter(prefix="/datacenter")
     "/",
     description="Operation retrieves a list of data centers with data indicating networks and associated free ip "
     "addresses.",
-    response_model=List[DataCenter],
+    # response_model=List[DataCenterInfo],
     tags=["Datacenter"],
     summary="List all the datacenters summary",
 )
-def get_all_datacenters() -> list[DataCenter]:
+@jinja.hx("datacenter-list.html")
+@log
+def get_all_datacenters() -> list[DataCenterInfo]:
     return service.get_all()
 
 
@@ -26,7 +25,7 @@ def get_all_datacenters() -> list[DataCenter]:
     "/{code}",
     tags=["Datacenter"],
 )
-def get_one(code) -> DataCenter | None:
+def get_one(code) -> DataCenterInfo | None:
     return service.get_one(code)
 
 
@@ -35,7 +34,7 @@ def get_one(code) -> DataCenter | None:
     "/",
     tags=["Datacenter"],
 )
-def create(datacenter: DataCenter) -> DataCenter:
+def create(datacenter: DataCenterRecord) -> DataCenterInfo:
     return service.create(datacenter)
 
 
@@ -43,7 +42,7 @@ def create(datacenter: DataCenter) -> DataCenter:
     "/",
     tags=["Datacenter"],
 )
-def modify(datacenter: DataCenter) -> DataCenter:
+def modify(datacenter: DataCenterRecord) -> DataCenterInfo:
     return service.modify(datacenter)
 
 
@@ -51,7 +50,7 @@ def modify(datacenter: DataCenter) -> DataCenter:
     "/",
     tags=["Datacenter"],
 )
-def replace(datacenter: DataCenter) -> DataCenter:
+def replace(datacenter: DataCenterInfo) -> DataCenterInfo:
     return service.replace(datacenter)
 
 

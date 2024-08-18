@@ -1,0 +1,5 @@
+/tailwindcss/node_modules/
+build/
+.idea
+dist
+src/datacenter_blaster.egg-info

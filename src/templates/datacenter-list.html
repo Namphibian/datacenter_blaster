@@ -1,0 +1,44 @@
+
+    <table id="default-table" class="table table-pin-rows table-sm">
+
+
+        {% for dc in items %}
+        <thead class="text-lg text-neutral-50">
+        <tr>
+            <th class="bg-secondary">
+
+                <ul>
+                    <li> {{ dc.name}}</li>
+                    <li><p>Status: {{dc.datacenter_status.code }}</p></li>
+
+                </ul>
+
+            </th>
+
+        </tr>
+        </thead>
+        <thead class="text-neutral-50">
+        <tr class="bg-neutral">
+            <th>CIDR</th>
+            <th>Network Type</th>
+            <th>Free Adresses</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for cidr in dc.networks %}
+        <tr class="hover font-mono">
+            <td> {{cidr.cidr}}</td>
+            <td> {{cidr.network_type.value}}</td>
+            <td> {{cidr.number_of_free_ips}}</td>
+        </tr>
+        <!--                        <div class="stat-desc">{{cidr.number_of_free_ips}} addresses available</div>-->
+        <!--                    </div>-->
+        {% endfor %}
+
+
+        </tbody>
+        {% endfor %}
+
+    </table>
+

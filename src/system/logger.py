@@ -7,6 +7,11 @@ from fastapi import FastAPI, Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import Message
 
+from system.logger_conf import logging_config
+
+logging.config.dictConfig(logging_config)
+X_REQUEST_ID = "X-Request-ID"
+
 
 class AsyncIteratorWrapper:
     """The following is a utility class that transforms a
@@ -35,20 +40,26 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
+        log_debug_mode = False
+        if logging.getLogger().isEnabledFor(logging.DEBUG):
+            log_debug_mode = True
         request_id: str = str(uuid4())
-        logging_dict = {
-            "X-API-REQUEST-ID": request_id  # X-API-REQUEST-ID maps each request-response to a unique ID
-        }
+        logging_dict = {X_REQUEST_ID: request_id}
 
         await self.set_body(request)
         response, response_dict = await self._log_response(
-            call_next, request, request_id
+            call_next=call_next,
+            request=request,
+            request_id=request_id,
+            log_body=log_debug_mode,
         )
         request_dict = await self._log_request(request)
         logging_dict["request"] = request_dict
         logging_dict["response"] = response_dict
-
-        self._logger.debug(logging_dict)
+        if log_debug_mode:
+            self._logger.debug(logging_dict)
+        else:
+            self._logger.info(logging_dict)
 
         return response
 
@@ -69,7 +80,11 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
         request._receive = receive
 
     async def _log_response(
-        self, call_next: Callable, request: Request, request_id: str
+        self,
+        call_next: Callable,
+        request: Request,
+        request_id: str,
+        log_body: bool = False,
     ) -> Response:
         """Logs response part
 
@@ -100,10 +115,10 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
 
         try:
             resp_body = json.loads(resp_body[0].decode())
-        except:
+        except Exception:
             resp_body = str(resp_body)
-
-        response_logging["body"] = resp_body
+        if log_body:
+            response_logging["body"] = resp_body
 
         return response, response_logging
 
@@ -125,7 +140,7 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
             response: Response = await call_next(request)
 
             # Kickback X-Request-ID
-            response.headers["X-API-Request-ID"] = request_id
+            response.headers.setdefault(X_REQUEST_ID, request_id)
             return response
 
         except Exception as e:
@@ -133,7 +148,7 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
                 {"path": request.url.path, "method": request.method, "reason": e}
             )
 
-    async def _log_request(self, request: Request) -> str:
+    async def _log_request(self, request: Request, log_body: bool = False) -> str:
         """Logs request part
          Arguments:
         - request: Request
@@ -151,9 +166,11 @@ class RouterLoggingMiddleware(BaseHTTPMiddleware):
         }
 
         try:
-            body = await request.json()
-            request_logging["body"] = body
-        except:
+            body = None
+            if log_body:
+                body = await request.json()
+                request_logging["body"] = body
+        except Exception:
             body = None
 
         return request_logging

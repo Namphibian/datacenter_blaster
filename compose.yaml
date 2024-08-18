@@ -1,3 +1,27 @@
-service:
-  datacenter_blaster_db: { }
+name: dc-blaster
+services:
+  db:
+    image: mysql
+    container_name: mysql-api-data
+    restart: always
+    hostname: data.svc.docker.local
+    environment:
+      MYSQL_ROOT_PASSWORD: pass123
+      MYSQL_DATABASE: datacenter
+      MYSQL_USER: rust
+      MYSQL_PASSWORD: crusty
+    volumes:
+      - ./docker-data/mysql-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      dc-blaster:
+        ipv4_address: 20.5.0.3
 
+networks:
+  dc-blaster:
+    driver: bridge
+    ipam:
+      config:
+        -
+          subnet: 20.5.0.0/24

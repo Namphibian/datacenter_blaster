@@ -8,8 +8,8 @@ from .ipaddress import IpAddressBase
 
 
 class NetworkType(str, Enum):
-    ipv4 = "ipv4"
-    ipv6 = "ipv6"
+    ipv4 = "IPV4"
+    ipv6 = "IPV6"
 
 
 class Cidr(RecordBase):

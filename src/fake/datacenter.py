@@ -1,33 +1,35 @@
 import uuid
 from datetime import datetime
 
-from ..exceptions.http import Missing, Duplicate
-from ..schema.base.record_base import AuditMetaData
-from ..schema.cidr import CidrSummary
+from exceptions.http import Missing, Duplicate
+from schema.base.record_base import AuditMetaData
+from schema.cidr import CidrSummary
 
-from ..schema.datacenter import DataCenter, DataCenterStatus
+from schema.datacenter import DataCenterInfo, DataCenterStatus, DataCenterRecord
+
+from system.decorators import log
 
 fakes = [
-    DataCenter(
+    DataCenterInfo(
         name="Iceland",
         id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ICE"),
         networks=[
             CidrSummary(
                 id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
                 cidr="2001:db8::/92",
-                network_type="ipv6",
+                network_type="IPV6",
                 number_of_free_ips=13,
             ),
             CidrSummary(
                 id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
                 cidr="13.0.0.0/16",
-                network_type="ipv4",
+                network_type="IPV4",
                 number_of_free_ips=35,
             ),
             CidrSummary(
                 id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="14.0.0.0/16",
-                network_type="ipv4",
+                network_type="IPV4",
                 number_of_free_ips=73,
             ),
         ],
@@ -45,7 +47,7 @@ fakes = [
             description="used",
         ),
     ),
-    DataCenter(
+    DataCenterInfo(
         id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="AM1"),
         audit_data=AuditMetaData(
             created_on=datetime.utcnow(),
@@ -57,13 +59,13 @@ fakes = [
             CidrSummary(
                 id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="10.0.0.0/16"),
                 cidr="10.0.0.0/16",
-                network_type="ipv4",
+                network_type="IPV4",
                 number_of_free_ips=13,
             ),
             CidrSummary(
                 id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="12.0.0.0/16"),
                 cidr="12.0.0.0/16",
-                network_type="ipv4",
+                network_type="IPV4",
                 number_of_free_ips=13,
             ),
         ],
@@ -76,10 +78,144 @@ fakes = [
             description="used",
         ),
     ),
+    DataCenterInfo(
+        name="Sacramento",
+        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="SAC"),
+        networks=[
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
+                cidr="2001:db8::/92",
+                network_type="IPV6",
+                number_of_free_ips=13,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
+                cidr="13.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=35,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+        ],
+        audit_data=AuditMetaData(
+            created_on=datetime.utcnow(),
+            created_by="Demo User",
+            updated_on=datetime.utcnow(),
+            updated_by="Demo User",
+        ),
+        code="SAC",
+        description="Sacramento main center",
+        datacenter_status=DataCenterStatus(
+            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
+            code="Active",
+            description="used",
+        ),
+    ),
+    DataCenterInfo(
+        name="Alpharetta",
+        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ALP"),
+        networks=[
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
+                cidr="2001:db8::/92",
+                network_type="IPV6",
+                number_of_free_ips=13,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
+                cidr="13.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=35,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+            CidrSummary(
+                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+                cidr="17.0.0.0/16",
+                network_type="IPV4",
+                number_of_free_ips=73,
+            ),
+        ],
+        audit_data=AuditMetaData(
+            created_on=datetime.utcnow(),
+            created_by="Demo User",
+            updated_on=datetime.utcnow(),
+            updated_by="Demo User",
+        ),
+        code="ALP",
+        description="Alpharetta main center",
+        datacenter_status=DataCenterStatus(
+            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
+            code="Active",
+            description="used",
+        ),
+    ),
 ]
 
 
-def find(code: str) -> DataCenter | None:
+def find(code: str) -> DataCenterInfo | None:
     for c in fakes:
         if c.code == code:
             return c
@@ -96,12 +232,14 @@ def check_duplicate(code: str):
         raise Duplicate(msg=f"Duplicate datacenter {code}")
 
 
-def get_all() -> list[DataCenter]:
+@log
+def get_all() -> list[DataCenterInfo]:
     """Return all creatures"""
     return fakes
 
 
-def get_one(code: str) -> DataCenter:
+@log
+def get_one(code: str) -> DataCenterInfo:
     """Return one creature"""
     check_missing(code)
     return find(code)
@@ -110,13 +248,13 @@ def get_one(code: str) -> DataCenter:
 # The following are non-functional for now,
 # so they just act like they work, without modifying
 # the actual fakes list:
-def create(datacenter: DataCenter) -> DataCenter:
+def create(datacenter: DataCenterRecord) -> DataCenterInfo:
     """Add a creature"""
     check_duplicate(datacenter.code)
     return datacenter
 
 
-def modify(code: str, datacenter: DataCenter) -> DataCenter:
+def modify(code: str, datacenter: DataCenterRecord) -> DataCenterInfo:
     """Partially modify a creature"""
     check_missing(datacenter.code)
     return datacenter
