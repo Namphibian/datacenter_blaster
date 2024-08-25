@@ -1,0 +1,287 @@
+<div id="main-data-table" class="flex flex-col --prevent-on-load-init" data-hs-datatable='{
+  "pagingOptions": {
+    "pageBtnClasses": "min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700"
+  },
+  "selecting": true,
+  "rowSelectingOptions": {
+    "selectAllSelector": "#hs-datatable-select-all-rows",
+    "individualSelector": ".hs-datatable-select-row"
+  },
+  "language": {
+    "zeroRecords": "<div class=\"p-5 h-full flex flex-col justify-center items-center text-center\"><svg class=\"w-48 mx-auto mb-4\" width=\"178\" height=\"90\" viewBox=\"0 0 178 90\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"27\" y=\"50.5\" width=\"124\" height=\"39\" rx=\"7.5\" fill=\"currentColor\" class=\"fill-white dark:fill-neutral-800\"/><rect x=\"27\" y=\"50.5\" width=\"124\" height=\"39\" rx=\"7.5\" stroke=\"currentColor\" class=\"stroke-gray-50 dark:stroke-neutral-700/10\"/><rect x=\"34.5\" y=\"58\" width=\"24\" height=\"24\" rx=\"4\" fill=\"currentColor\" class=\"fill-gray-50 dark:fill-neutral-700/30\"/><rect x=\"66.5\" y=\"61\" width=\"60\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-50 dark:fill-neutral-700/30\"/><rect x=\"66.5\" y=\"73\" width=\"77\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-50 dark:fill-neutral-700/30\"/><rect x=\"19.5\" y=\"28.5\" width=\"139\" height=\"39\" rx=\"7.5\" fill=\"currentColor\" class=\"fill-white dark:fill-neutral-800\"/><rect x=\"19.5\" y=\"28.5\" width=\"139\" height=\"39\" rx=\"7.5\" stroke=\"currentColor\" class=\"stroke-gray-100 dark:stroke-neutral-700/30\"/><rect x=\"27\" y=\"36\" width=\"24\" height=\"24\" rx=\"4\" fill=\"currentColor\" class=\"fill-gray-100 dark:fill-neutral-700/70\"/><rect x=\"59\" y=\"39\" width=\"60\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-100 dark:fill-neutral-700/70\"/><rect x=\"59\" y=\"51\" width=\"92\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-100 dark:fill-neutral-700/70\"/><g filter=\"url(#@@id)\"><rect x=\"12\" y=\"6\" width=\"154\" height=\"40\" rx=\"8\" fill=\"currentColor\" class=\"fill-white dark:fill-neutral-800\" shape-rendering=\"crispEdges\"/><rect x=\"12.5\" y=\"6.5\" width=\"153\" height=\"39\" rx=\"7.5\" stroke=\"currentColor\" class=\"stroke-gray-100 dark:stroke-neutral-700/60\" shape-rendering=\"crispEdges\"/><rect x=\"20\" y=\"14\" width=\"24\" height=\"24\" rx=\"4\" fill=\"currentColor\" class=\"fill-gray-200 dark:fill-neutral-700 \"/><rect x=\"52\" y=\"17\" width=\"60\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-200 dark:fill-neutral-700\"/><rect x=\"52\" y=\"29\" width=\"106\" height=\"6\" rx=\"3\" fill=\"currentColor\" class=\"fill-gray-200 dark:fill-neutral-700\"/></g><defs><filter id=\"@@id\" x=\"0\" y=\"0\" width=\"178\" height=\"64\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"/><feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"/><feOffset dy=\"6\"/><feGaussianBlur stdDeviation=\"6\"/><feComposite in2=\"hardAlpha\" operator=\"out\"/><feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0\"/><feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_1187_14810\"/><feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_1187_14810\" result=\"shape\"/></filter></defs></svg><div class=\"max-w-sm mx-auto\"><p class=\"mt-2 text-sm text-gray-600 dark:text-neutral-400\">No data</p></div></div>"
+  }
+}'>
+    <div class="flex items-center space-x-2 mb-4">
+        <div class="flex-0">
+            <div class="relative max-w-xs">
+                <label for="hs-table-filter-search" class="sr-only">Search</label>
+                <input type="text" name="hs-table-filter-search" id="hs-table-filter-search"
+                       class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                       placeholder="Search for items" data-hs-datatable-search="">
+                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
+                    <svg class="size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
+                         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 flex items-center justify-end space-x-2">
+            <!-- Select -->
+            <select class="hidden" data-hs-select='{
+        "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+        "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 px-3 pe-9 flex text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded-lg text-start text-sm text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800",
+        "dropdownClasses": "mt-2 z-50 w-20 max-h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
+        "optionClasses": "py-2 px-3 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-md focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800",
+        "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>",
+        "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 dark:text-neutral-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+      }' data-hs-datatable-page-entities="">
+                <option value="10" selected="">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+            <!-- End Select -->
+
+        </div>
+    </div>
+
+    <div class="overflow-x-auto min-h-auto ">
+        <div class="min-w-full inline-block align-middle">
+            <div class="overflow-hidden">
+                <table id="da" class="min-w-full">
+                    <thead class="border-y border-gray-200 dark:border-neutral-700">
+                    <tr>
+                        <th scope="col"
+                            class="py-2 px-3 text-end font-normal text-sm text-gray-500 --exclude-from-ordering dark:text-neutral-500">
+
+                        </th>
+
+
+                        <th scope="col" class="py-1 group text-start font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                Code
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-start font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                Name
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-start font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                Status
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+
+                        <th scope="col" class="py-1 text-right group font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV4 CIDR
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-right font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV4 Free Addresses
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-right font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV4 Allocated Addresses
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-right font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV6 CIDR
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-right font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV6 Free addresses
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                        <th scope="col" class="py-1 group text-right font-normal focus:outline-none">
+                            <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 rounded-md hover:border-gray-200 dark:text-neutral-500 dark:hover:border-neutral-700">
+                                IPV6 Allocated Addresses
+                                <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500"
+                                          d="m7 15 5 5 5-5"></path>
+                                    <path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500"
+                                          d="m7 9 5-5 5 5"></path>
+                                </svg>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+                    {% for dc in items %}
+                    <tr>
+                        <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            <span type="button"
+                                  class="inline-flex justify-center items-center size-[38px] cursor-pointer rounded-full bg-blue-600 text-white dark:bg-blue-500"
+                                  aria-haspopup="dialog"
+                                  aria-expanded="false"
+                                  aria-controls="hs-basic-modal"
+                                  data-hs-overlay="#hs-basic-modal"
+                                  hx-trigger="click"
+                                  hx-get="/datacenter/{{ dc.code }}"
+                                  hx-target="#hs-basic-modal"
+                                  hx-trigger="click">
+                                <svg class="shrink-0 size-4 lucide lucide-view"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path d="M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2"/>
+                                    <path d="M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2"/><circle cx="12" cy="12" r="1"/>
+                                    <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/></svg>
+                            </span>
+                        </td>
+                        <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.code}}
+                        </td>
+                        <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.name}}
+                        </td>
+                        <td class="p-3 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.datacenter_status.code}}
+                        </td>
+                        <td class="p-3 text-right whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.ipv4_networks|length}}
+                        </td>
+                        <td class="p-3 text-right  whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                           {{ dc.ipv4_networks|sum(attribute='free_addresses') }}
+                        </td>
+                        <td class="p-3 text-right  whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.ipv4_networks|sum(attribute='total_addresses') }}
+                        </td>
+                        <td class="p-3  text-right whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.ipv6_networks|length}}
+                        </td>
+                        <td class="p-3  text-right  whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.ipv6_networks|sum(attribute='free_addresses') }}
+                        </td>
+                        <td class="p-3 text-right  whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                            {{ dc.ipv6_networks|sum(attribute='total_addresses') }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center mt-4">
+        <div class="flex items-center space-x-1 hidden" data-hs-datatable-paging="">
+            <button type="button"
+                    class="p-2.5 min-w-[40px] inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                    data-hs-datatable-paging-prev="">
+                <span aria-hidden="true">«</span>
+                <span class="sr-only">Previous</span>
+            </button>
+            <div class="flex items-center space-x-1 [&>.active]:bg-gray-100 dark:[&>.active]:bg-neutral-700"
+                 data-hs-datatable-paging-pages=""></div>
+            <button type="button"
+                    class="p-2.5 min-w-[40px] inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                    data-hs-datatable-paging-next="">
+                <span class="sr-only">Next</span>
+                <span aria-hidden="true">»</span>
+            </button>
+        </div>
+        <div class="text-xs text-gray-500 ms-auto dark:text-neutral-400" data-hs-datatable-info="">
+            Showing
+            <span data-hs-datatable-info-from=""></span>
+            to
+            <span data-hs-datatable-info-to=""></span>
+            of
+            <span data-hs-datatable-info-length=""></span>
+            users
+        </div>
+    </div>
+</div>
+
+<div id="hs-basic-modal"
+     class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-full-screen-label">"
+     role="dialog" tabindex="-1" aria-labelledby="hs-basic-modal-label">
+
+</div>

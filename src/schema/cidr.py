@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List
 
-from pydantic import IPvAnyNetwork
+from pydantic import IPvAnyNetwork, BaseModel
 
 from .base.record_base import RecordBase
 from .ipaddress import IpAddressBase
@@ -15,10 +15,13 @@ class NetworkType(str, Enum):
 class Cidr(RecordBase):
     cidr: IPvAnyNetwork
     network_type: NetworkType
-    adresses: List[IpAddressBase]
+    addresses: List[IpAddressBase]
 
 
-class CidrSummary(RecordBase):
+1
+
+
+class CidrSummary(BaseModel):
     cidr: IPvAnyNetwork
-    network_type: NetworkType
-    number_of_free_ips: int
+    total_addresses: int
+    free_addresses: int

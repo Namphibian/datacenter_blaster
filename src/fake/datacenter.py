@@ -12,27 +12,27 @@ from system.decorators import log
 fakes = [
     DataCenterInfo(
         name="Iceland",
-        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ICE"),
-        networks=[
+        ipv6_networks=[
+
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
+                total_addresses=1024,
                 cidr="2001:db8::/92",
-                network_type="IPV6",
-                number_of_free_ips=13,
-            ),
+                free_addresses=13,
+
+            )],
+        ipv4_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
+
                 cidr="13.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=35,
+                total_addresses=256,
+                free_addresses=35,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+
                 cidr="14.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
-            ),
-        ],
+                total_addresses=256,
+                free_addresses=73,
+            )],
         audit_data=AuditMetaData(
             created_on=datetime.utcnow(),
             created_by="Demo User",
@@ -42,93 +42,82 @@ fakes = [
         code="ICE",
         description="Iceland main center",
         datacenter_status=DataCenterStatus(
-            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
             code="Active",
             description="used",
         ),
     ),
     DataCenterInfo(
-        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="AM1"),
         audit_data=AuditMetaData(
             created_on=datetime.utcnow(),
             created_by="Demo User",
             updated_on=datetime.utcnow(),
             updated_by="Demo User",
         ),
-        networks=[
+        ipv6_networks=[],
+        ipv4_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="10.0.0.0/16"),
                 cidr="10.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=13,
+                free_addresses=13,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="12.0.0.0/16"),
                 cidr="12.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=13,
+                free_addresses=13,
+                total_addresses=256,
             ),
         ],
         name="Amsterdam",
         code="AM1",
         description="Amsterdam main center",
         datacenter_status=DataCenterStatus(
-            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
             code="Active",
             description="used",
         ),
     ),
     DataCenterInfo(
         name="Sacramento",
-        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="SAC"),
-        networks=[
+        ipv6_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
                 cidr="2001:db8::/92",
-                network_type="IPV6",
-                number_of_free_ips=13,
-            ),
+                total_addresses=512,
+                free_addresses=13,
+            )],
+        ipv4_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
                 cidr="13.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=35,
+                total_addresses=256,
+                free_addresses=35,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
+
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                total_addresses=256,
+                free_addresses=73,
             ),
         ],
         audit_data=AuditMetaData(
@@ -140,63 +129,54 @@ fakes = [
         code="SAC",
         description="Sacramento main center",
         datacenter_status=DataCenterStatus(
-            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
             code="Active",
             description="used",
         ),
     ),
     DataCenterInfo(
         name="Alpharetta",
-        id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="ALP"),
-        networks=[
+        ipv6_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="2001:db8::/92"),
                 cidr="2001:db8::/92",
-                network_type="IPV6",
-                number_of_free_ips=13,
-            ),
+                total_addresses=2048,
+                free_addresses=13,
+            )],
+        ipv4_networks=[
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="13.0.0.0/16"),
                 cidr="13.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=35,
+                free_addresses=35,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                free_addresses=73,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                free_addresses=73,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                free_addresses=73,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                free_addresses=73,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
+                free_addresses=73,
+                total_addresses=256,
             ),
             CidrSummary(
-                id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="14.0.0.0/16"),
                 cidr="17.0.0.0/16",
-                network_type="IPV4",
-                number_of_free_ips=73,
-            ),
+                free_addresses=73,
+                total_addresses=256,
+            )
         ],
         audit_data=AuditMetaData(
             created_on=datetime.utcnow(),
@@ -207,7 +187,6 @@ fakes = [
         code="ALP",
         description="Alpharetta main center",
         datacenter_status=DataCenterStatus(
-            id=uuid.uuid5(namespace=uuid.NAMESPACE_OID, name="Active"),
             code="Active",
             description="used",
         ),

@@ -6,17 +6,18 @@ from schema.base.record_base import RecordBase, AuditMetaData
 from schema.cidr import CidrSummary
 
 
-class DataCenterStatus(RecordBase):
+class DataCenterStatus(BaseModel):
     code: str
     description: Optional[str]
 
 
-class DataCenterInfo(RecordBase):
+class DataCenterInfo(BaseModel):
     name: str
     code: str
     description: str
     datacenter_status: DataCenterStatus
-    networks: Optional[List[CidrSummary]]
+    ipv4_networks: Optional[List[CidrSummary]]
+    ipv6_networks: Optional[List[CidrSummary]]
     audit_data: AuditMetaData
 
 
